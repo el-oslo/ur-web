@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'shokaki';
+    src: url("../assets/fonts/shokaki-utage.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url("../assets/fonts/Manrope-VariableFont_wght.ttf") format('truetype');
+}
+
+:root {
+    --clr-primary: #D72323;
+    --clr-secondary: #3E3636;
+    --clr-black: #000000;
+    --clr-bg: #F5EDED;
+    --clr-bg-secondary: #EEE4E4;
+
+    --clr-success: #316E14;
+    --clr-error: #ff0000;
+
+    --fs-base: 16px;
+    --fs-small: 13px;
+    --fs-micro: 10px;
+    --fs-large: 20px;
+    --fs-xlarge: 24px;
+    --fs-xbig: 128px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    font-family: 'Manrope', sans-serif;
+    font-size: var(--fs-base);
+    color: var(--clr-secondary);
+    background-color: var(--clr-bg);
+}
+
+.error {
+    color: var(--clr-error);
+}
+
+.font-styled {
+    font-family: 'shokaki', sans-serif;
+}

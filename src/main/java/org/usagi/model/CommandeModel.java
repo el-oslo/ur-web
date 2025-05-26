@@ -39,13 +39,13 @@ public class CommandeModel {
         this.typecom = typecom;
     }
     
-    private String idtalbe;
-    public String getIdtalbe() {
-        return idtalbe;
+    private String idtable;
+    public String getIdtable() {
+        return idtable;
     }
 
-    public void setIdtalbe(String idtalbe) {
-        this.idtalbe = idtalbe;
+    public void setIdtable(String idtable) {
+        this.idtable = idtable;
     }
  
     private LocalDateTime datecom;
@@ -54,6 +54,17 @@ public class CommandeModel {
     }
 
     public void setDatecom(LocalDateTime datecom) {
+        this.datecom = datecom;
+    }
+
+    public CommandeModel() {}
+
+    public CommandeModel(String idcom, String idplat, String nomcli, String typecom, String idtable, LocalDateTime datecom) {
+        this.idcom = idcom;
+        this.idplat = idplat;
+        this.nomcli = nomcli;
+        this.typecom = typecom;
+        this.idtable = idtable;
         this.datecom = datecom;
     }
 }

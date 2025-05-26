@@ -11,6 +11,7 @@
     
     <mvc:resources mapping="/js/**" location="/js/" />
     <mvc:resources mapping="/assets/**" location="/assets/" />
+    <mvc:resources mapping="/styles/**" location="/styles/" />
     <mvc:default-servlet-handler/>
 
     <context:component-scan base-package="org.usagi" />
@@ -35,6 +36,18 @@
     </bean>
 
     <bean id="menuDAO" class="org.usagi.DAO.MenuDAO">
+        <constructor-arg ref="jdbcTemplate" />
+    </bean>
+
+    <bean id="tableDAO" class="org.usagi.DAO.TableDAO">
+        <constructor-arg ref="jdbcTemplate" />
+    </bean>
+
+    <bean id="commandeDAO" class="org.usagi.DAO.CommandeDAO">
+        <constructor-arg ref="jdbcTemplate" />
+    </bean>
+
+    <bean id="reserverDAO" class="org.usagi.DAO.ReserverDAO">
         <constructor-arg ref="jdbcTemplate" />
     </bean>
 

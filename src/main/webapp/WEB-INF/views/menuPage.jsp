@@ -4,10 +4,20 @@ prefix="c" uri="jakarta.tags.core" %>
   <head>
     <base href="${pageContext.request.contextPath}/">
     <link rel="icon" type="image/svg+xml" href="${pageContext.request.contextPath}/assets/UR-logo.svg">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/styles/global.css">
   </head>
   <body>
     <div class="gestion__menu">
-      <!-- <img src="${pageContext.request.contextPath}/assets/UR-logo.svg" alt="logo"> -->
+       <div class="navbar">
+        <div class="logo">
+          <p class="font-styled">
+            Ryori
+          </p>
+        </div>
+       </div>
+       <p class="error">
+        <c:if test="${not empty error}">${error}</c:if>
+       </p>
       <div class="list">
         <h2>List of Menus</h2>
         <table>
@@ -27,7 +37,11 @@ prefix="c" uri="jakarta.tags.core" %>
                 <td>${menu.pu}</td>
                 <td>
                   <button data-idplat="${menu.idplat}" data-nomplat="${menu.nomplat}" data-pu="${menu.pu}" class="btn-menu-modifier" >Modifier</button>
-                  <button>Suppr</button>
+                  <button>
+                    <a href="${pageContext.request.contextPath}/gestion/menus/delete/${menu.idplat}">
+                      Suppr
+                    </a>
+                  </button>
                 </td>
               </tr>
             </c:forEach>

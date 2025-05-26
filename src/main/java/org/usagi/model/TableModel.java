@@ -1,6 +1,17 @@
 package org.usagi.model;
 
 public class TableModel {
+
+    public TableModel() {
+        // Default constructor
+    }
+
+    public TableModel(String idtable, String designation, Boolean occupation) {
+        this.idtable = idtable;
+        this.designation = designation;
+        this.occupation = occupation;
+    }
+
     private String idtable;
     public String getId() {
         return this.idtable;

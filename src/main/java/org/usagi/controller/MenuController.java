@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.usagi.DAO.MenuDAO;
 import org.usagi.model.MenuModel;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/gestion/menus")
@@ -34,38 +35,38 @@ public class MenuController {
     }
 
     @PostMapping("/create")
-    public ModelAndView CreateMenu(@ModelAttribute MenuModel menu) {
+    public ModelAndView CreateMenu(@ModelAttribute MenuModel menu, HttpServletRequest request) {
         int res = menuDao.save(menu);
         if (res == 1) {
-            return new ModelAndView("redirect: /gestion/menus");
+            return new ModelAndView("redirect: " + request.getContextPath() + "/gestion/menus");
         }
-        return new ModelAndView("redirect:/home");
+        return new ModelAndView("redirect:"+request.getContextPath()+"/gestion/menus").addObject("error", "Failed to create menu");
     }
 
     @PostMapping("/update")
-    public ModelAndView UpdateMenu(@ModelAttribute MenuModel updateValue) {
+    public ModelAndView UpdateMenu(@ModelAttribute MenuModel updateValue, HttpServletRequest request) {
         MenuModel menu = menuDao.get(updateValue.getIdplat()).orElse(null);
         int res = 0;
         if (menu != null) {
             res = menuDao.update(menu, updateValue);
         }
         if (res == 1) {
-            return new ModelAndView("redirect: /gestion/menus");
+            return new ModelAndView("redirect:" + request.getContextPath() + "/gestion/menus");
         }
-        return new ModelAndView("redirect:/home");
+        return new ModelAndView("redirect:"+request.getContextPath()+"/home");
     }
 
-    @PostMapping("/delete/{idplat}")
-    public ModelAndView DeleteMenu(@PathVariable("idplat") String idplat) {
+    @GetMapping("/delete/{idplat}")
+    public ModelAndView DeleteMenu(@PathVariable("idplat") String idplat, HttpServletRequest request) {
         MenuModel menu = menuDao.get(idplat).orElse(null);
         int res = 0;
         if (menu != null) {
             res = menuDao.delete(menu);
         }
         if (res == 1) {
-            return new ModelAndView("redirect: /gestion/menus");
+            return new ModelAndView("redirect:" + request.getContextPath() + "/gestion/menus");
         }
-        return new ModelAndView("redirect:/home");
+        return new ModelAndView("redirect:"+request.getContextPath()+"/home");
     }
 
     
